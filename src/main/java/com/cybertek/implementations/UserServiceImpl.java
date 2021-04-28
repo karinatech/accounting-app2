@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     //email=username
     public UserDTO findByUserName(String userName) {
-    User user = userRepo.findByUserName(userName);
+    User user = userRepo.findByEmail(userName);
     UserDTO userDTO=mapperUtil.convert(user,new UserDTO());
         return userDTO;
     }
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDTO> listAllUsersByRole(String role) {
-        List<User>users=userRepo.findAllByRoleNameIgnoreCase(role);
+        List<User>users=userRepo.findAllByRolesNameIgnoreCase(role);
         return users.stream().map(obj->{return mapperUtil.convert(obj,new UserDTO());})
                 .collect(Collectors.toList());
     }
@@ -55,14 +55,14 @@ userRepo.save(user);
 
     @Override
     public void delete(String userName) {
-        User user = userRepo.findByUserName(userName);
+        User user = userRepo.findByEmail(userName);
         user.setEmail(user.getEmail()+"-"+user.getId());
         user.setDeleted(true);
     }
 
     @Override
     public void update(UserDTO userDTO) {
-        User user=userRepo.findByUserName(userDTO.getEmail());
+        User user=userRepo.findByEmail(userDTO.getEmail());
         User convertedUser=mapperUtil.convert(userDTO,new User());
         convertedUser.setPassword(passwordEncoder.encode(convertedUser.getPassword()));
         convertedUser.setId(user.getId());

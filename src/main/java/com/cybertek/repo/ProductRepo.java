@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ProductRepo extends JpaRepository<Product,Integer> {
    Product findByName(String name);
-   List<Product>findAllByLowLimitAlert();
+   List<Product>findAllByLowLimitAlert(Integer alert);
 }

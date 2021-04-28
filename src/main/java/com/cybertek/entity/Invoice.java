@@ -29,7 +29,6 @@ public class Invoice extends BaseEntity{
     private Company company;
     @OneToOne(fetch = FetchType.LAZY)
     private Sp sp;
-
     @OneToOne(mappedBy = "invoice")
     private InvoiceProduct invoiceProduct;
 
