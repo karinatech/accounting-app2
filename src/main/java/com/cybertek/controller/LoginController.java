@@ -16,6 +16,10 @@ public class LoginController {
     public String changeLayout(){
     return "html/layout-horizontal-dark";
 }
+@GetMapping("/data-table")
+    public String getDataTable(){
+    return "html/table-datatable";
+}
 
 
 
