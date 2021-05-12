@@ -7,151 +7,55 @@
 
 
 <div th:fragment="left-sidebar">
+  <!-- START: Main Menu-->
+  <div class="sidebar">
+    <div class="site-width">
 
-  <div class="nav-left-sidebar sidebar-dark">
-    <div class="menu-list">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav flex-column">
-            <li class="nav-divider"></li>
-            <li class="nav-item">
-              <a
-                      class="nav-link active"
-                      href="#"
-                      data-toggle="collapse"
-                      aria-expanded="false"
-                      data-target="#submenu-1"
-                      aria-controls="submenu-1"
-              ><i class="fa fa-fw fa-user-circle"></i>Management
-                <span class="badge badge-success">6</span></a
-              >
-              <div id="submenu-1" class="collapse submenu" style="">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/user/create}"
-                    >Company Registration</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/project/create}"
-                    >User Registration</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/user/create}"
-                    >Vendor/Client Registration</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a
-                      class="nav-link"
-                      href="#"
-                      data-toggle="collapse"
-                      aria-expanded="false"
-                      data-target="#submenu-2"
-                      aria-controls="submenu-2"
-              >
-                <i class="fas fa-chalkboard-teacher"></i>Stock Management</a
-              >
-              <div id="submenu-2" class="collapse submenu" style="">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/task/create}"
-                    >Products
-                      <span class="badge badge-secondary">New</span></a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/project/manager/complete}">Category</a>
-                  </li>
-
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a
-                      class="nav-link"
-                      href="#"
-                      data-toggle="collapse"
-                      aria-expanded="false"
-                      data-target="#submenu-3"
-                      aria-controls="submenu-3"
-              ><i class="fas fa-user-graduate"></i>Invoices</a
-              >
-              <div id="submenu-3" class="collapse submenu" style="">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/task/employee}"
-                    >Sales</a
-                    >
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/task/employee/archive}"
-                    >Purchases</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/task/employee/archive}"
-                    >Search</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="nav-item">
-              <a
-                      class="nav-link"
-                      href="#"
-                      data-toggle="collapse"
-                      aria-expanded="false"
-                      data-target="#submenu-3"
-                      aria-controls="submenu-3"
-              ><i class="fas fa-user-graduate"></i>Reporting</a
-              >
-              <div id="submenu-4" class="collapse submenu" style="">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/task/employee}"
-                    >Stock Report</a
-                    >
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/task/employee/archive}"
-                    >Profit/Loss Report</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-
+      <!-- START: Menu-->
+      <ul id="side-menu" class="sidebar-menu">
+        <li><a href="#"><i class="icon-home mr-1"></i> Dashboard</a>
+        </li>
+        <li class="dropdown active"><a href="#"><i class="icon-organization mr-1"></i> Management</a>
+          <ul>
+            <li><a href="#"><i class="icon-star"></i>Company Registration</a></li>
+            <li><a href="#"><i class="icon-rocket"></i> User Registration</a></li>
+            <li><a href="#"><i class="icon-diamond"></i> Vendor/Client Registration</a></li>
 
 
           </ul>
-        </div>
-      </nav>
+        </li>
+        <li class="dropdown"><a href="#"><i class="icon-layers mr-1"></i> Stock Management</a>
+          <ul>
+            <li><a th:href="@{app-calendar.html}"><i class="icon-layers"></i> Products</a></li>
+            <li><a th:href="@{app-chat.html}"><i class="icon-grid"></i> Category</a></li>
+
+          </ul>
+        </li>
+
+        <li class="dropdown"><a href="#"><i class="icon-book-open"></i> Invoices</a>
+          <ul>
+
+            <li><a th:href="@{chart-echart.html}"><i class="icon-film"></i> Purchase invoices</a></li>
+            <li><a th:href="@{chart-morris.html}"><i class="icon-layers"></i> Sale invoices</a></li>
+            <li><a th:href="@{chart-chartist.html}"><i class="icon-shuffle"></i> Invoice Search</a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a href="#"><i class="icon-magnet mr-1"></i> Reposting</a>
+          <ul>
+            <li><a th:href="@{ui-alert.html}"><i class="icon-bell"></i> Stock Report</a></li>
+            <li><a th:href="@{ui-badges.html}"><i class="icon-badge"></i> Profit/Loss Report</a></li>
+
+          </ul>
+        </li>
+      </ul>
+      <!-- END: Menu-->
+      <ol class="breadcrumb bg-transparent align-self-center m-0 p-0 ml-auto">
+        <li class="breadcrumb-item"><a href="#">Application</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
     </div>
   </div>
-
+  <!-- END: Main Menu-->
 </div>
 
 
