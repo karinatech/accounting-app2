@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CompanyService {
     List<CompanyDTO>listAllCompanies();
-    Company save(CompanyDTO companyDTO);
+    CompanyDTO save(CompanyDTO companyDTO);
     void delete(Integer companyId);
     void disableCompany(Integer companyId);
 

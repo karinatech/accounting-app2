@@ -30,12 +30,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company save(CompanyDTO companyDTO) {
+    public CompanyDTO save(CompanyDTO companyDTO) {
       companyDTO.setEnabled(true);
       Company obj=mapperUtil.convert(companyDTO,new Company());
      Company company = companyRepo.save(obj);
-
-        return company;
+        return mapperUtil.convert(company,new CompanyDTO());
     }
 
     @Override

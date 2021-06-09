@@ -1,25 +1,40 @@
 package com.cybertek.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+import com.cybertek.entity.AuthenticationRequest;
+import com.cybertek.entity.ResponseWrapper;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class LoginController {
 
 
-@GetMapping("/login")
-    public String doLogin(){
-//    return "user/create";
-    return "html/page-login";
-}
+    @PostMapping("/authenticate")
+    public ResponseEntity<ResponseWrapper> doLogin(@RequestBody AuthenticationRequest authenticationRequest) {
+
+        String password = authenticationRequest.getPassword();
+        String username = authenticationRequest.getUsername();
+
+        return ResponseEntity.ok(new ResponseWrapper("Login Successful", ));
+
+    }
+
 @GetMapping("/layout-horizontal")
     public String changeLayout(){
     return "html/layout-horizontal-dark";
 }
+
 @GetMapping("/data-table")
     public String getDataTable(){
     return "html/table-datatable";
 }
+
+    @GetMapping("/basic-form")
+    public String getForm(){ return "html/form-basic"; }
 
 
 
