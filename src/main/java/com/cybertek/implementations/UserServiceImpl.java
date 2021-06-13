@@ -1,6 +1,7 @@
 package com.cybertek.implementations;
 
 import com.cybertek.cnverters.MapperUtil;
+import com.cybertek.dto.RoleDTO;
 import com.cybertek.dto.UserDTO;
 import com.cybertek.entity.User;
 import com.cybertek.repo.UserRepo;
@@ -28,14 +29,15 @@ public class UserServiceImpl implements UserService {
     public UserDTO findByUserName(String userName) {
     User user = userRepo.findByEmail(userName);
     UserDTO userDTO=mapperUtil.convert(user,new UserDTO());
+        System.out.println("here is user from DB "+ userDTO.getEmail() + " "+userDTO.getPassword());
         return userDTO;
     }
 
     @Override
-    public List<UserDTO> listAllUsers() {
+    public List<User> listAllUsers() {
         List<User>listUsers=userRepo.findAll();
-        return listUsers.stream().map(obj->{return mapperUtil.convert(obj,new UserDTO());})
-                .collect(Collectors.toList());
+        System.out.println(listUsers.get(0).getEmail()+"here is user from dB");
+        return listUsers;
     }
 
     @Override
@@ -47,10 +49,11 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void save(UserDTO userDTO) {
+    public UserDTO save(UserDTO userDTO) {
 User user=mapperUtil.convert(userDTO,new User());
 user.setPassword(passwordEncoder.encode(user.getPassword()));
 userRepo.save(user);
+return mapperUtil.convert(userRepo.findByEmail(userDTO.getEmail()),new UserDTO());
     }
 
     @Override
@@ -67,5 +70,10 @@ userRepo.save(user);
         convertedUser.setPassword(passwordEncoder.encode(convertedUser.getPassword()));
         convertedUser.setId(user.getId());
         userRepo.save(convertedUser);
+    }
+
+    @Override
+    public RoleDTO findRoleByUserName(String userName) {
+        return null;
     }
 }
